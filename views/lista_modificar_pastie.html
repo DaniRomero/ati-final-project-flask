@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPastie</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/style.css"/>
+		<script type='text/javascript' src="statics/js/jquery-1.9.1.min.js"></script>
+		<script type='text/javascript' src="statics/js/funciones.js"></script>
+	</head>
+	<body>
+		<div class="cont-cabecera bc-oscuro">
+			<div class="boton-menu">
+				<a href="#" onclick="desplegarMenu()"><img class="img-boton-menu" src="statics/img/boton-menu.png" /></a>	
+			</div>
+			<div class="logo ff-kaushan">
+				<a href="/index" class="a-blanco">MyPastie</a>
+			</div>
+			<div class="search">
+				<form action="/busqueda_registrado" method="post">
+					<input name="buscar" type="text" class="form-search" placeholder="Buscar...">
+					<input class="img-boton-search cursor-pointer" type="image" src="statics/img/boton-buscar.png"/>
+				</form>		
+			</div>
+			<div class="vista-perfil">
+				<a href="#" onclick="desplegarMenuPerfil()">
+					<img class="img-perfil" src="statics/img/perfil.png" />
+				</a>
+			</div>
+		</div>
+		<div class="cont-invisible-cabecera"></div>
+		<div class="cont-cuerpo">
+			<div class="menu bc-grisaceo">
+				<div class="menu-perfil-izq">
+					<br>
+					<div class="menu-perfil-nombre ff-awe">
+						<a class="perfil a-blanco" href="/profile">	
+							<span  class = "glyphicon glyphicon-user"  aria-hidden = "true" > 
+									<span class="tag-username ff-awe">adminMyPastie</span>
+							</span>
+						</a>
+					</div>
+					<br>
+					<div class="menu-perfil-cerrar">
+						<a class="cerrar-sesion a-blanco" href="/login">
+							<span  class = "glyphicon glyphicon-lock"  aria-hidden = "true" >
+								<span class="ff-awe">Cerrar Sesi&oacute;n</span>
+							</span>
+						</a>
+					</div>
+					<br>
+				</div>
+				<nav class="menu-pastie">			
+					<ul>
+						<a class="a-blanco" href="/index">
+							<li class="opc-menu bc-grisaceo">
+								<span  class = "glyphicon glyphicon-home"  aria-hidden = "true" > 
+									<span class="ff-awe">Inicio</span>
+								</span>
+							</li>
+						<a>
+						<a class="a-blanco" href="/categorias_registrado">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-tags"  aria-hidden = "true" >
+									<span class="ff-awe">Categor&iacute;as</span>
+								</span>
+							</li>
+						</a>
+					</ul>
+				</nav>
+
+				<nav class="menu-usuario-izq">
+					<div class="separador bc-oscuro"></div>
+					<ul>
+						<a class="a-blanco" href="/perfil">
+							<li class="opc-menu bc-grisaceo">
+								<span  class = "glyphicon glyphicon-edit"  aria-hidden = "true" > 
+									<span class="ff-awe">Editar Perfil</span>
+								</span>
+							</li>
+						<a>
+						<a class="a-blanco" href="/crear_pastie_registrado">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-file"  aria-hidden = "true" > 
+									<span class="ff-awe">Crear Pastie</span>
+								</span>
+							</li>
+						</a>
+						<a class="a-blanco" href="/editar">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-pencil"  aria-hidden = "true" > 
+									<span class="ff-awe">Modificar Pastie</span>
+								</span>
+							</li>
+						</a>
+						<a class="a-blanco" href="/eliminar">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-remove"  aria-hidden = "true" >
+									<span class="ff-awe">Eliminar Pastie</span>
+								</span>
+							</li>
+						</a>
+					</ul>
+				</nav>
+			</div>
+			<div class="cont-invisible-menu"></div>
+			<div class="contenido">
+				<br>
+				{% if ok==0 %}
+					<div class="ff-awe" style="color:#a94442; background-color:#f2dede; border-color:#ebccd1; width:80%; margin: 0 auto"><p><b>No se pud&oacute; modificar el pastie seleccionado</b></p></div>
+					<br>
+					<div class="ff-awe" style="color:#a94442; background-color:#f2dede; border-color:#ebccd1; width:80%; margin: 0 auto"><p><b>Ayuda: Recuerde que todas las categor&iacute;as deben empiezar por el car&aacute;cter '#'</b></p></div>
+				{%endif%}
+
+
+				{% for i in range(0,max) %}
+					<div class="content ff-awe">
+						<div class="data_owner">{{owner}}</div>
+						<div class="data_date">{{pasties[i][4]}}</div>
+						<div class="data_title">{{pasties[i][1]}}</div>
+						<br>
+						<div class="data_content">{{pasties[i][2]}}</div>
+						<br>
+						<div class="data_hashtag">{{hashtags[i]}}</div>
+						<div class="edit-btn">
+						<form action="/editar" method="post">
+							<input type="text" name="id_edit" value="{{pasties[i][0]}}" hidden>
+								<a class="a-edit" href="/editar">	
+									<button type="submit">
+										<span  class = "glyphicon glyphicon-pencil"  aria-hidden = "true" ></span>
+									</button>						
+								</a>
+						</form>
+						</div>
+					</div>
+				{% endfor %}
+				
+			</div>
+			<div class="usuario bc-grisaceo">
+				<div class="menu-perfil-der">
+					<br>
+					<div class="menu-perfil-nombre ff-awe">
+						<a class="perfil a-blanco" href="/profile">	
+							<span  class = "glyphicon glyphicon-user"  aria-hidden = "true" > 
+									<span class="tag-username ff-awe">adminMyPastie</span>
+							</span>
+						</a>
+					</div>
+					<br>
+					<div class="menu-perfil-cerrar">
+						<a class="cerrar-sesion a-blanco" href="/login">
+							<span  class = "glyphicon glyphicon-lock"  aria-hidden = "true" >
+								<span class="ff-awe">Cerrar Sesi&oacute;n</span>
+							</span>
+						</a>
+					</div>
+					<br>
+				</div>
+				<nav class="menu-usuario-der">	
+					<ul>
+						<a class="a-blanco" href="/perfil">
+							<li class="opc-menu bc-grisaceo">
+								<span class = "glyphicon glyphicon-edit"  aria-hidden = "true" > 
+									<span class="ff-awe">Editar Perfil</span>
+								</span>
+							</li>
+						<a>
+						<a class="a-blanco" href="/crear_pastie_registrado">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-file"  aria-hidden = "true" > 
+									<span class="ff-awe">Crear Pastie</span>
+								</span>
+							</li>
+						</a>
+						<a class="a-blanco" href="/lista_editar">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span class = "glyphicon glyphicon-pencil"  aria-hidden = "true" > 
+									<span class="ff-awe">Modificar Pastie</span>
+								</span>
+							</li>
+						</a>
+						<a class="a-blanco" href="/eliminar">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-remove"  aria-hidden = "true" >
+									<span class="ff-awe">Eliminar Pastie</span>
+								</span>
+							</li>
+						</a>
+					</ul>
+				</nav>
+			</div>
+			<div class="cont-invisible-usuario"></div>
+		</div>	
+		<script type='text/javascript' src="statics/js/bootstrap.js"></script>
+	</body>
+</html>

@@ -1,0 +1,80 @@
+	<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPastie</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/style.css"/>
+		<script type='text/javascript' src="statics/js/jquery-1.9.1.min.js"></script>
+		<script type='text/javascript' src="statics/js/funciones.js"></script>
+		<script type='text/javascript' src="statics/js/bootstrap.js"></script>
+	</head>
+	<body class="bc-grey">
+		<div class="cont-cabecera bc-oscuro">
+			<div class="boton-menu">
+				<a href="#" onclick="desplegarMenu()"><img class="img-boton-menu" src="statics/img/boton-menu.png" /></a>	
+			</div>
+			<div class="logo ff-kaushan">
+				<a href="/index" class="a-blanco">MyPastie</a>
+			</div>
+			<div class="search">
+				<form action="/busqueda_registrado" method="post">
+					<input name="buscar" type="text" class="form-search" placeholder="Buscar...">
+					<input class="img-boton-search cursor-pointer" type="image" src="statics/img/boton-buscar.png"/>
+				</form>	
+			</div>
+
+		</div>
+		<div class="cont-invisible-cabecera"></div>
+		<div class="cont-cuerpo">
+			<div class="menu menu-reducido bc-grisaceo">
+				<nav class="menu-pastie">			
+					<ul>
+						<a class="a-blanco" href="/index">
+							<li class="opc-menu bc-grisaceo">
+								<span  class = "glyphicon glyphicon-home"  aria-hidden = "true" > 
+									<span class="ff-awe">Inicio</span>
+								</span>
+							</li>
+						<a>
+						<a class="a-blanco" href="/categorias_registrado">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-tags"  aria-hidden = "true" >
+									<span class="ff-awe">Categor&iacute;as</span>
+								</span>
+							</li>
+						</a>
+					</ul>
+				</nav>
+			</div>
+			<div class="cont-invisible-menu menu-reducido"></div>
+			<div class="contenido">
+				<div class="data-registro-full">	
+					<h2 class="ff-kaushan">
+						<strong>
+							Gracias por Registrarte, ahora necesitamos un poco m&aacute;s acerca de ti
+						</strong>
+					</h2>
+					<form action="/anadir_registro" method="post">
+						<input type="text" name="nombres" class="login-user" placeholder="Nombres" required>
+						<br><br>
+						<input type="text" name="apellidos" class="login-user" placeholder="Apellidos" required>
+						<br><br>
+						<input type="text" name="fecha_nac" class="login-user" placeholder="Fecha de Nacimiento" pattern="^\d{1,2}\/\d{1,2}\/\d{2,4}$" type="text" title="Ej: 01/01/2000" required>
+						<br><br>
+						<input type="text" name="pais" class="login-user" placeholder="Pa&iacute;s">
+						<br><br>
+						<input type="text" name="ciudad" class="login-user" placeholder="Ciudad">
+						<br><br>
+						<input type="text" name="telefono" class="login-user" placeholder="Telefono">
+						<br><br>
+						<input type="submit" class="botReg botRegAncho"value="Enviar datos">
+						
+		        		<input type="button" VALUE="Recordar Luego" class="botReg botRegAncho" onclick="location.href='/index'">
+		        	</form>
+				</div>
+			</div>
+			<div class="usuario bc-grisaceo"></div>
+			<div class="cont-invisible-usuario"></div>
+		</div>	
+	</body>
+</html>

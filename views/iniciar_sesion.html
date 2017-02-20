@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPastie</title>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/style.css"/>
+		<script type='text/javascript' src="statics/js/jquery-1.9.1.min.js"></script>
+		<script type='text/javascript' src="statics/js/funciones.js"></script>
+		<script type='text/javascript' src="statics/js/bootstrap.js"></script>
+	</head>
+	<body class="bc-grey">
+		<div class="cont-cabecera bc-oscuro">
+			<div class="boton-menu">
+				<a href="#" onclick="desplegarMenu()"><img class="img-boton-menu" src="statics/img/boton-menu.png" /></a>	
+			</div>
+			<div class="logo ff-kaushan">
+				<a href="/login" class="a-blanco">MyPastie</a>
+			</div>
+			<div class="search">
+				<form action="/busqueda_anonimo" method="post">
+					<input name="buscar" type="text" class="form-search" placeholder="Buscar...">
+					<input class="img-boton-search cursor-pointer" type="image" src="statics/img/boton-buscar.png"/>
+				</form>	
+			</div>
+			<div class="vista-perfil">
+				
+			</div>
+
+		</div>
+		<div class="cont-invisible-cabecera"></div>
+		<div class="cont-cuerpo">
+			<div class="menu menu-reducido bc-grisaceo">
+				<nav class="menu-pastie">			
+					<ul>
+						<a href="/" class="a-blanco">
+							<li class="opc-menu bc-grisaceo">
+								<span  class = "glyphicon glyphicon-home"  aria-hidden = "true" > 
+									<span class="ff-awe">Inicio</span>
+								</span>
+							</li>
+						<a>
+						<a href="/categorias" class="a-blanco">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-tags"  aria-hidden = "true" >
+									<span class="ff-awe">Categor&iacute;as</span>
+								</span>
+							</li>
+						</a>
+					</ul>
+				</nav>
+			</div>
+			<div class="cont-invisible-menu menu.reducido"></div>
+			<div class="contenido">				
+			<br><br>
+			{% if ok == 1 %}
+		    <div style="color: #3c763d;background-color: #dff0d8;border-color: #d6e9c6;width:80%; margin: 0 auto"><p><b>Se ha enviado un correo a su cuenta, se recomienda cambiar la contraseña luego de iniciar sesión</b></p></div>
+		    {% endif %}
+		    {% if ok == 0 %}
+		    <div style="color:#a94442;background-color:#f2dede; border-color:#ebccd1; width:80%; margin: 0 auto"><p><b>Usuario invalido</b></p></div>
+		    {% endif %}
+
+			<div class="data-login ff-awe">
+					<form action="/iindex" method="post">
+						<br>
+						<input type="text" name="user"class="login-user" placeholder="Nombre de usuario" required>
+						<br><br>
+						<input type="password" name="pass" class="login-pass" placeholder="Contrase&ntilde;a" required>
+						<br><br>
+						<input class="botLogin" type="submit" value="Iniciar Sesi&oacute;n"/>
+					</form>
+						<br><br>
+						<a class="forgot a-blanco" href="/recuperar_pass">&iquest;Olvidaste tu contrase&ntilde;a? </a>
+				</div>
+				<div class="separador bc-oscuro"></div>
+				<div class="data-registro">
+					<form action="/registro" method="post">
+						<h2 class="ff-kaushan">
+							<strong>
+								&iquest;Eres nuevo en MyPastie? Reg&iacute;strate
+							</strong>
+						</h2>
+						<br>
+						<input type="text" name="user" class="login-user" placeholder="Nombre de Usuario" required>
+						<br><br>
+						<input type="email" name="mail" class="login-user" placeholder="Correo Electronico" title="Ej: mail@servidor.com" required>
+						<br><br>
+						<input type="password" name="password" class="login-user" placeholder="Contrase&ntilde;a" required>
+						<br><br>
+						<input class="botReg" type="submit" value="Registrarse"/>
+					</form>
+				</div>
+				
+			</div>
+			<div class="usuario bc-grisaceo"></div>
+			<div class="cont-invisible-usuario"></div>
+		</div>
+		<script type='text/javascript' src="statics/js/funciones.js"></script>
+	</body>
+</html>

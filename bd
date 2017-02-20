@@ -1,0 +1,51 @@
+su postgres
+psql -U ati -W -d ati_database -h localhost
+
+create table users( 
+	id_p int primary key,
+	name_usuario varchar(510) NOT NULL,
+	email varchar(510) NOT NULL,
+	password varchar(50) NOT NULL,
+	nombres varchar(510),
+	apellidos varchar(510),
+	fecha_nac date,
+	pais varchar(510),
+	ciudad varchar(510),
+	telefono varchar(510)
+);	
+
+create table pastie (
+	id_p serial primary key,
+	title varchar(510) not null,
+	contenido varchar(1000) not null,
+	privacidad varchar(10),
+	time varchar(128),
+	id_u int references users(id_p) not null
+);
+
+create table categoria (
+	id_c serial primary key,
+	categoria varchar(510)
+);
+
+create table p_c (
+	id_p serial references pastie(id_p),
+	id_c serial references categoria(id_c),
+	primary key(id_p, id_c)
+);
+
+create table sess (
+	sess int,
+	usuario varchar(510)
+);
+
+insert into sess values (0,'nadie');
+
+insert into users (id_p, name_usuario,email,password,nombres,apellidos,fecha_nac,pais,ciudad,telefono) values (1,'dara','dara323@gmail.com','123',null,null,null,null,null,null);
+
+insert into pastie (id_p,title,contenido,privacidad,time,id_u) values (1,'Inicio','Mi Primer Contenido', 'publico','2015-04-02 19:43:16',1);
+
+insert into categoria (id_c, categoria) values (1,'#ATI');
+
+insert into p_c (id_p, id_c) values (1,1);
+

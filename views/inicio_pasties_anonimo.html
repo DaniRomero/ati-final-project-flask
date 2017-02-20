@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPastie</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/style.css"/>
+		<script type='text/javascript' src="statics/js/jquery-1.9.1.min.js"></script>
+		<script type='text/javascript' src="statics/js/funciones.js"></script>
+	</head>
+	<body onload="cargarPastiesInicio()">
+		<div class="cont-cabecera bc-oscuro">
+			<div class="boton-menu">
+				<a href="#" onclick="desplegarMenu()"><img class="img-boton-menu" src="statics/img/boton-menu.png" /></a>	
+			</div>
+			<div class="logo ff-kaushan">
+				<a href="/" class="a-blanco">MyPastie</a>
+			</div>
+			<div class="search">
+				<form action="/busqueda_anonimo" method="post">
+					<input name="buscar" type="text" class="form-search" placeholder="Buscar...">
+					<input class="img-boton-search cursor-pointer" type="image" src="statics/img/boton-buscar.png"/>
+				</form>	
+			</div>
+			<div class="vista-perfil">
+				<a href="/login">
+					<img class="img-perfil" src="statics/img/ingresar.png" />
+				</a>
+			</div>
+		</div>
+		<div class="cont-invisible-cabecera"></div>
+		<div class="cont-cuerpo">
+			<div class="menu menu-reducido bc-grisaceo">
+				<nav class="menu-pastie">			
+					<ul>
+						<a class="a-blanco" href="/">
+							<li class="opc-menu bc-grisaceo">
+								<span  class = "glyphicon glyphicon-home"  aria-hidden = "true" > 
+									<span class="ff-awe">Inicio</span>
+								</span>
+							</li>
+						<a>
+						<a class="a-blanco" href="/categorias">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-tags"  aria-hidden = "true" >
+									<span class="ff-awe">Categor&iacute;as</span>
+								</span>
+							</li>
+						</a>
+					</ul>
+				</nav>
+			</div>
+			<div class="cont-invisible-menu menu-reducido"></div>
+			<div class="contenido">
+				<div class="content ff-awe">
+						<br>
+						<div class="data_owner"></div>
+						<div class="data_date"> </div>
+						<div class="data_title"></div>
+						<br>
+						<div class="data_content"></div>
+						<br>
+						<div class="data_hashtag"></div>
+					</div>
+					<div class="cargar-mas">
+						<input class="botUpdate" type="button" value="Cargar" onclick="lee_json()"/>
+					</div>
+			</div>
+			<div class="usuario bc-grisaceo">
+			</div>
+			<div class="cont-invisible-usuario"></div>
+		</div>	
+		<script type='text/javascript' src="statics/js/bootstrap.js"></script>
+	</body>
+</html>

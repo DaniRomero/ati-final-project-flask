@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>MyPastie</title>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" media="screen" href="statics/css/style.css"/>
+		<script type='text/javascript' src="statics/js/jquery-1.9.1.min.js"></script>
+		<script type='text/javascript' src="statics/js/funciones.js"></script>
+	</head>
+	<body>
+		<div class="cont-cabecera bc-oscuro">
+			<div class="boton-menu">
+				<a href="#" onclick="desplegarMenu()"><img class="img-boton-menu" src="statics/img/boton-menu.png" /></a>	
+			</div>
+			<div class="logo ff-kaushan">
+				<a href="/login" class="a-blanco">MyPastie</a>
+			</div>
+			<div class="search">
+				<form action="/busqueda_registrado" method="post">
+					<input name="buscar" type="text" class="form-search" placeholder="Buscar...">
+					<input class="img-boton-search cursor-pointer" type="image" src="statics/img/boton-buscar.png"/>
+				</form>		
+			</div>
+			<div class="vista-perfil">
+				<a href="/login">
+					<img class="img-perfil" src="statics/img/ingresar.png" />
+				</a>
+			</div>
+		</div>
+		<div class="cont-invisible-cabecera"></div>
+		<div class="cont-cuerpo">
+			<div class="menu bc-grisaceo">
+				<nav class="menu-pastie">			
+					<ul>
+						<a class="a-blanco" href="/">
+							<li class="opc-menu bc-grisaceo">
+								<span  class = "glyphicon glyphicon-home"  aria-hidden = "true" > 
+									<span class="ff-awe">Inicio</span>
+								</span>
+							</li>
+						<a>
+						<a class="a-blanco" href="/categorias">
+							<li class="opc-menu bc-grisaceo ff-awe">
+								<span  class = "glyphicon glyphicon-tags"  aria-hidden = "true" >
+									<span class="ff-awe">Categor&iacute;as</span>
+								</span>
+							</li>
+						</a>
+					</ul>
+				</nav>
+			</div>
+			<div class="cont-invisible-menu"></div>
+			<div class="contenido">
+				<br><br>
+				{% if ok == 0 %}
+			    <div style="color:#a94442; background-color:#f2dede; border-color:#ebccd1; width:80%; margin: 0 auto"><p><b>El usuario que ha introducido no se encuentra registrado</b></p></div>
+			    {% endif %}
+				<div class="data-registro-full">
+					<form action="/proc_pass" method="post">
+						<h2 class="rec-pass">
+							Por favor, introduce el Nombre de Usuario de tu cuenta para enviar una contrase&ntilde;a provisional a tu correo electr&oacute;nico asociado.
+						</h2>
+						<input name="user" class="login-user" type="text" placeholder="Nombre de Usuario" required>
+						<br><br>
+						<input type="submit" class="botReg" value="Enviar">
+					</form>
+				</div>
+			</div>
+			<div class="usuario bc-grisaceo">
+			</div>
+			<div class="cont-invisible-usuario"></div>
+		</div>	
+		<script type='text/javascript' src="statics/js/bootstrap.js"></script>
+	</body>
+</html>
